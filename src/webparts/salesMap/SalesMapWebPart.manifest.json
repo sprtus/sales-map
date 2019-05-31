@@ -19,9 +19,7 @@
     "group": { "default": "Other" },
     "title": { "default": "SalesMap" },
     "description": { "default": "A simple web part to visualize sales data by state" },
-    "officeFabricIconFontName": "Page",
-    "properties": {
-      "description": "SalesMap"
-    }
+    "officeFabricIconFontName": "Nav2DMapView",
+    "properties": {}
   }]
 }

@@ -1,30 +1,16 @@
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { Version } from '@microsoft/sp-core-library';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import {
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-property-pane';
 
-import * as strings from 'SalesMapWebPartStrings';
+import { ISalesMapProps } from './components/SalesMap';
 import SalesMap from './components/SalesMap';
-import { ISalesMapProps } from './components/ISalesMapProps';
 
-export interface ISalesMapWebPartProps {
-  description: string;
-}
-
-export default class SalesMapWebPart extends BaseClientSideWebPart<ISalesMapWebPartProps> {
-
+export default class SalesMapWebPart extends BaseClientSideWebPart<{}> {
   public render(): void {
-    const element: React.ReactElement<ISalesMapProps > = React.createElement(
-      SalesMap,
-      {
-        description: this.properties.description
-      }
-    );
-
+    const element: React.ReactElement<ISalesMapProps> = React.createElement(SalesMap, {
+      context: this.context,
+    });
     ReactDom.render(element, this.domElement);
   }
 
@@ -34,27 +20,5 @@ export default class SalesMapWebPart extends BaseClientSideWebPart<ISalesMapWebP
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
-  }
-
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
-    };
   }
 }
