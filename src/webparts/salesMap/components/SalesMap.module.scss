@@ -11,3 +11,15 @@
     height: 400px;
   }
 }
+
+// Refresh
+.refresh {
+  background: #fff;
+  border: 1px solid '[theme:themePrimary, default:#65D1FD]';
+  color: '[theme:themePrimary, default:#65D1FD]';
+  cursor: pointer;
+  display: block;
+  font-size: inherit;
+  margin: 20px auto;
+  padding: .75em 1.25em;
+}

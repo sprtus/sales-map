@@ -28,6 +28,9 @@ export default class SalesMap extends React.Component<ISalesMapProps, ISalesMapS
     super(props);
 
     // Bind methods
+    this.refresh = this.refresh.bind(this);
+    this.getSalesData = this.getSalesData.bind(this);
+    this.calculateTotals = this.calculateTotals.bind(this);
     this.mapData = this.mapData.bind(this);
 
     // State
@@ -62,6 +65,8 @@ export default class SalesMap extends React.Component<ISalesMapProps, ISalesMapS
           }}
           data={this.mapData()}
         />
+
+        <button className={styles.refresh} onClick={this.refresh}>Refresh</button>
       </div>
     );
   }
@@ -75,6 +80,7 @@ export default class SalesMap extends React.Component<ISalesMapProps, ISalesMapS
   private async refresh(): Promise<void> {
     await this.getSalesData();
     this.calculateTotals();
+    this.render();
   }
 
   // Get sales data
