@@ -1,5 +1,13 @@
+// Title
+.title {
+  font-weight: 200;
+  margin: 0;
+  text-align: center;
+}
+
 // Map
 .map {
-  display: block;
-  width: 100%;
+  svg {
+    height: 400px;
+  }
 }
